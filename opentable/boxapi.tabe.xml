@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+    <meta>
+        <sampleQuery>use "https://github.com/downloads/bitbay/open-data-tables/boxapi.tabe.xml"; select * from xml 
+        	where url in ( 
+        		select url from uritemplate 
+    			where template="https://upload.box.net/api/1.0/upload/{auth_key}/{folder}/" and auth_key=@auth_key and folder=@folder
+			);
+		</sampleQuery>
+    </meta>
+    <bindings>
+        <insert itemPath="" produces="XML" pollingFrequencySeconds="2">
+            <!--urls>
+                <url>https://upload.box.net/api/1.0/upload/{auth_key}/{folder}/</url>
+            </urls-->
+            <inputs>
+                <key id='auth_key' type='xs:string' paramType='path' required="true" />
+                <key id='folder' type='xs:string' paramType='path' required="true" />
+                <map id='formdata' type='xs:string' paramType='variable' required="true"/>
+            </inputs>
+            <execute>
+                <![CDATA[
+                // Your javascript goes here. We will run it on our servers
+ //               var content= "Ticker=" + TICKER + "&SearchRadio=EarningsCalendar";
+//                response.object = request.accept('text/html').contentType("application/x-www-form-urlencoded").post(content).response;
+                
+                var request = y.rest(url);
+				var data = request.accept('application/json').contentType("multipart/form-data");
+				y.log("called");
+				try {
+					response.object = data.post(formdata).response;
+					//response.object={'auth':auth_key, 'folder':folder};
+                } catch(err) {
+                	response.object = {'result':'failure', 'error': err};
+                }
+                ]]>
+            </execute>
+        </insert>
+    </bindings>
+</table>

@@ -1,0 +1,33 @@
+Requirements (20%)
+
+1.	The solution addresses all the requirements as specified in the project
+	posting request. The reviewer must be able to find all of the requirements
+	implemented in the returned solution. (1 - 4)
+2.	Is the code appropriately scoped? Does is it not over design for the current
+	task? (1 - 4)
+
+Documentation/Readability (20%)
+
+1.	A deployment guide is attached with the submission. The deployment guide is
+	well written and clearly articulates the steps necessary to deploy the
+	system. (1 - 4)
+2.	The code is clear, well written and documented clearly (1 - 4)
+3.	All hard coded values are called out directly in the deploy document. Clear
+	instructions for replacing all hard coded values are present (1 - 4)
+4.	Is the code well documented? Are there code comments on functions and
+	internally where necessary? (1 - 4)
+
+Code Quality (30%)
+
+1.	Is the code appropriately batched? Code should not be operated on individual
+	items if possible (1 - 4)
+2.	Is the code thoroughly covered with clear, functional unit tests? (1 - 4)
+3.	Does the code cleanly integrate with the rest of the toolkit? (1 - 4)
+
+Submission (30%)
+
+1.	Did the submission include a video demonstrating the functionality if
+	required? (1 - 2)
+2.	Overall look and feel of the UI. (1 - 10)
+3.	Overall quality of the submission. (1 - 10)
+4.	Overall fit of the challenge objectives. (1 - 10)

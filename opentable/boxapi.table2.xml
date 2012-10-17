@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- set attribute https="true" on the table element for production -->
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd">
+    <meta>
+        <author></author>
+        <documentationURL></documentationURL>
+        <description></description>
+        <sampleQuery></sampleQuery>
+        <apiKeyURL></apiKeyURL>
+    </meta>
+    <bindings>
+        <insert itemPath="" produces="JSON">
+            <urls>
+            	<url>
+            		https://upload.box.net/api/1.0/@auth_key/@folder/
+            	</url>
+            </urls>
+            <inputs>
+            	<key id='url' type='xs:string' paramType='path' required="true" />
+                <key id='auth_key' type='xs:string' paramType='path' required="true" />
+                <key id='folder' type='xs:string' paramType='path' required="true" />
+                <map id='formdata' type='xs:string' paramType='variable' required="true"/>
+            </inputs>
+            <execute>
+                <![CDATA[
+                   
+					y.log("called");
+					try {
+					 	var request = y.rest(url);
+						response.object = request.accept('application/json').contentType("multipart/form-data").post(formdata).response;
+                	} catch(err) {
+                		response.object = {'result':'failure', 'error': err};
+                	}
+                ]]>
+            </execute>
+        </insert>
+    </bindings>
+</table>
